@@ -2,9 +2,9 @@ import 'package:flutter_chat_app/data/MessageData.dart';
 import 'package:flutter_chat_app/data/UserData.dart';
 
 class FakeRepo {
- static UserData me = UserData("me", "again", "1234567890", "someOne@gmail.com",
-      UserType.talent, GenderType.secret);
- static UserData otherUser = UserData("other", "guy", "1231231231",
+  static UserData me = UserData.special(0,"me", "again", "1234567890",
+      "someOne@gmail.com", UserType.talent, GenderType.secret);
+  static UserData otherUser = UserData.special(1,"other", "guy", "1231231231",
       "someOtherGuy@gmail.com", UserType.talent, GenderType.female);
 
   UserData getMainUser() {
@@ -16,7 +16,7 @@ class FakeRepo {
   }
 
   List<MessageData> getChatMessages() {
-    List<MessageData> returnedList = List.empty();
+    List<MessageData> returnedList = [];
     for (var i = 0; i < 100; i++) {
       MessageData msg = new MessageData();
       switch (i % 8) {
