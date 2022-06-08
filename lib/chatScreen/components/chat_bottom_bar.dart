@@ -27,6 +27,7 @@ class _ChatBottomBarState extends State<ChatBottomBar> {
 
   @override
   Widget build(BuildContext context) {
+    final prov = Provider.of<ChatModel>(context, listen: false);
     return BottomAppBar(
       child: Row(
         children: [
@@ -41,10 +42,13 @@ class _ChatBottomBarState extends State<ChatBottomBar> {
           )),
           IconButton(
               onPressed: () {
-                final prov = Provider.of<ChatModel>(context, listen: false);
                 prov.easyAddSent(_controller.text);
-                _controller.text = "";
-                
+                _controller.text = "";//clearing text field
+
+                Future.delayed(const Duration(milliseconds: 20), () {//need to wait a bit for listview to rebuild
+                  prov.getScrollController().jumpTo(
+                      prov.getScrollController().position.maxScrollExtent);
+                });
               },
               icon: Icon(Icons.send))
         ],

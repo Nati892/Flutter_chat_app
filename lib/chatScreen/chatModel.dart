@@ -4,9 +4,11 @@ import 'package:flutter_chat_app/data/fakeRepo.dart';
 
 class ChatModel extends ChangeNotifier {
   List<MessageData> messageList = [];
+  late ScrollController _controller;// controller for the messages listview
   int otherId = 0;
 
   ChatModel(int otherId) {
+    _controller = ScrollController();
     this.otherId = otherId;
     for (MessageData element in FakeRepo().getChatMessages()) {
       messageList.add(element);
@@ -16,6 +18,10 @@ class ChatModel extends ChangeNotifier {
   void addMessage(MessageData msg) {
     messageList.add(msg);
     notifyListeners();
+  }
+
+  ScrollController getScrollController() {
+    return this._controller;
   }
 
   void easyAddSent(String text) {

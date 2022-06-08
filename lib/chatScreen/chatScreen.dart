@@ -5,7 +5,7 @@ import 'package:flutter_chat_app/chatScreen/components/messageListView.dart';
 import 'package:provider/provider.dart';
 
 class ChatScreen extends StatelessWidget {
-  static final route = "ChatSscreen";
+  static const route = "ChatSscreen";
 
   const ChatScreen({Key? key}) : super(key: key);
 
@@ -18,7 +18,7 @@ class ChatScreen extends StatelessWidget {
           child: Column(
             children: [
               Expanded(child: messageListView()),
-              ChatBottomBar()
+              const ChatBottomBar()
             ],
           ),
         ),
