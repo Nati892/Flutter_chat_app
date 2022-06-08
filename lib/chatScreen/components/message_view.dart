@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_app/data/UserData.dart';
 import 'package:flutter_chat_app/data/fakeRepo.dart';
 
 import '../../data/MessageData.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_app/chatScreen/chatModel.dart';
 import 'package:flutter_chat_app/chatScreen/components/messageListView.dart';
-import 'package:flutter_chat_app/data/fakeRepo.dart';
+import 'package:provider/provider.dart';
 
 class ChatScreen extends StatelessWidget {
   static final route = "ChatSscreen";
@@ -10,8 +11,11 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: messageListView(),
+      body: ChangeNotifierProvider(
+        create: (context) => ChatModel(0),
+        child: Center(
+          child: messageListView(),
+        ),
       ),
     );
   }

@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_chat_app/chatScreen/chatModel.dart';
 import 'package:flutter_chat_app/chatScreen/components/message_view.dart';
-import 'package:flutter_chat_app/data/fakeRepo.dart';
+import 'package:provider/provider.dart';
 import '../../data/MessageData.dart';
 
 class messageListView extends StatelessWidget {
@@ -10,10 +12,22 @@ class messageListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    lst = FakeRepo().getChatMessages();
+    List<MessageData> msgs = Provider.of<ChatModel>(context).messageList;
     return Container(
-      child: ListView(
-        children: lst.map((e) => MessageView(e)).toList(),
+      child: Column(
+        children: [
+          IconButton(
+              onPressed: () {
+                final prov = Provider.of<ChatModel>(context, listen: false);
+                prov.easyAddSent("text");
+              },
+              icon: Icon(Icons.send)),
+          Expanded(
+            child: ListView(
+              children: msgs.map((e) => MessageView(e)).toList(),
+            ),
+          ),
+        ],
       ),
     );
   }
