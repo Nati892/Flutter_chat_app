@@ -16,12 +16,7 @@ class messageListView extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          IconButton(
-              onPressed: () {
-                final prov = Provider.of<ChatModel>(context, listen: false);
-                prov.easyAddSent("text");
-              },
-              icon: Icon(Icons.send)),
+         
           Expanded(
             child: ListView(
               children: msgs.map((e) => MessageView(e)).toList(),

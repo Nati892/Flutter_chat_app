@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/chatScreen/chatModel.dart';
+import 'package:flutter_chat_app/chatScreen/components/chat_bottom_bar.dart';
 import 'package:flutter_chat_app/chatScreen/components/messageListView.dart';
 import 'package:provider/provider.dart';
 
@@ -14,9 +15,15 @@ class ChatScreen extends StatelessWidget {
       body: ChangeNotifierProvider(
         create: (context) => ChatModel(0),
         child: Center(
-          child: messageListView(),
+          child: Column(
+            children: [
+              Expanded(child: messageListView()),
+              ChatBottomBar()
+            ],
+          ),
         ),
       ),
+    
     );
   }
 }
