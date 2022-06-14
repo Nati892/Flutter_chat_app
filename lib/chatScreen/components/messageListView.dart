@@ -42,15 +42,5 @@ ScrolledOnBuild=true
     );
   }
 
-  // @override
-  // void initState() {
-  //   WidgetsBinding.instance.addPostFrameCallback((_) => {
-
-  //         // provider!
-  //         //     .getScrollController()
-  //         //     .jumpTo(provider!.getScrollController().position.maxScrollExtent);
-
-  //       });
-  // }
 
 }

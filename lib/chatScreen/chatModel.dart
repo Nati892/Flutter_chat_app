@@ -1,10 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_chat_app/data/MessageData.dart';
 import 'package:flutter_chat_app/data/fakeRepo.dart';
 
 class ChatModel extends ChangeNotifier {
   List<MessageData> messageList = [];
-  late ScrollController _controller;// controller for the messages listview
+  late ScrollController _controller; // controller for the messages listview
   int otherId = 0;
 
   ChatModel(int otherId) {
@@ -45,5 +47,20 @@ class ChatModel extends ChangeNotifier {
 
   int getOtherId() {
     return this.otherId;
+  }
+
+  Future<void> mockRecieveMessages() async {
+    List<String> mockText = [
+      "how you doin?",
+      "I cant fix your printer!",
+      "I will not hack your ex's facebook!",
+      "no programmer said ever"
+    ];
+    final _random = new Random();
+    while (true) {
+      await Future.delayed(Duration(milliseconds: 1500));
+      var element = mockText[_random.nextInt(mockText.length)];
+      easyAddRecieved(element);
+    }
   }
 }
